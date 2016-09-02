@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace backend.Entity
 {
     [DbConfigurationType(typeof(NpgsqlConfiguration))]
-    internal class ShopContext : DbContext
+    public class ShopContext : DbContext
     {
         public ShopContext(string cs): base(cs) {}
 
