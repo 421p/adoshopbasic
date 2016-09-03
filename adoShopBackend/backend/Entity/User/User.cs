@@ -13,7 +13,7 @@ namespace backend.Entity.User
         public User()
         {
             this.ApiKey = Guid.NewGuid().ToString("N");
-            Orders = new HashSet<Order>();
+            //Orders = new HashSet<Order>();
         }
 
         [Key]   
@@ -43,6 +43,6 @@ namespace backend.Entity.User
         [Required]
         public string ApiKey { get; set; }
 
-        public virtual ICollection<Order> Orders { get; set; }
+        //public virtual ICollection<Order> Orders { get; set; }
     }
 }

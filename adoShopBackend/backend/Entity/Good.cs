@@ -9,7 +9,7 @@ namespace backend.Entity
     {
         public Good()
         {
-            GoodsInOrders = new HashSet<GoodsInOrders>();
+            //GoodsInOrders = new HashSet<GoodsInOrders>();
         }
 
         [Key]
@@ -37,6 +37,6 @@ namespace backend.Entity
 
         public virtual Supplier Supplier { get; set; }
 
-        public virtual ICollection<GoodsInOrders> GoodsInOrders { get; set; }
+       // public virtual ICollection<GoodsInOrders> GoodsInOrders { get; set; }
     }
 }

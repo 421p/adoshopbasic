@@ -11,6 +11,8 @@ namespace backend.Entity
         public Order()
         {
             GoodsInOrders = new HashSet<GoodsInOrders>();
+            Date = DateTime.Now;
+            
         }
 
         [Key]
@@ -25,9 +27,7 @@ namespace backend.Entity
         [Required]
         public int UserId { get; set; }
 
-        //calculate on db level?
         [Column("sum", TypeName = "money")]
-        [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
         public int Sum { get; private set; }
 
         public virtual ICollection<GoodsInOrders> GoodsInOrders { get; set; }
