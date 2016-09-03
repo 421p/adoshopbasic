@@ -17,7 +17,7 @@ namespace backend
         {
             Database.SetInitializer(new DropCreateDatabaseAlways<ShopContext>());
 
-            var model = new ShopContext();
+            var model = new ShopContext(ConnectionStrings["shop_ado"].ConnectionString);
 
             model.Users.Add(new User()
             {
