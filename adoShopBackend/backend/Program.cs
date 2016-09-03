@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using backend.Entity;
 using backend.Entity.User;
+using backend.Server;
+using LanguageExt;
+using static LanguageExt.List;
+using static LanguageExt.Prelude;
 using static System.Configuration.ConfigurationManager;
 
 namespace backend
@@ -17,6 +20,16 @@ namespace backend
         {
             Database.SetInitializer(new DropCreateDatabaseAlways<ShopContext>());
 
+            Task.Factory.StartNew(LoadData);
+
+            var instance = new Instance();
+            instance.Start();
+
+            Console.ReadKey();
+        }
+
+        static void LoadData()
+        {
             var model = new ShopContext(ConnectionStrings["shop_ado"].ConnectionString);
 
             model.Users.Add(new User()
@@ -32,8 +45,6 @@ namespace backend
             {
                 Console.WriteLine(user.Name);
             }
-
-            Console.ReadKey();
         }
     }
 }
