@@ -71,7 +71,7 @@
   <ItemGroup>
     <Compile Include="Entity\Category.cs" />
     <Compile Include="Entity\Good.cs" />
-    <Compile Include="Entity\GoodsInOrders.cs" />
+    <Compile Include="Entity\OrderRelatedGoods.cs" />
     <Compile Include="Entity\Order.cs" />
     <Compile Include="Entity\ShopContext.cs" />
     <Compile Include="Entity\Supplier.cs" />

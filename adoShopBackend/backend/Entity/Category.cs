@@ -9,7 +9,7 @@ namespace backend.Entity
     {
         public Category()
         {
-            Goods = new HashSet<Good>();
+           Goods = new HashSet<Good>();
         }
 
         [Key]

@@ -10,9 +10,8 @@ namespace backend.Entity
     {
         public Order()
         {
-            GoodsInOrders = new HashSet<GoodsInOrders>();
-            Date = DateTime.Now;
-            
+            Date = DateTime.Now; 
+            Goods = new HashSet<OrderRelatedGoods>();
         }
 
         [Key]
@@ -23,13 +22,8 @@ namespace backend.Entity
         [Required]
         public DateTime Date { get; set; }
 
-        [Column("user_id")]
-        [Required]
-        public int UserId { get; set; }
+        public virtual User.User User { get; set; }
 
-        [Column("sum", TypeName = "money")]
-        public int Sum { get; private set; }
-
-        public virtual ICollection<GoodsInOrders> GoodsInOrders { get; set; }
+        public virtual ICollection<OrderRelatedGoods> Goods { get; set; }
     }
 }

@@ -9,7 +9,6 @@ namespace backend.Entity
     {
         public Good()
         {
-            //GoodsInOrders = new HashSet<GoodsInOrders>();
         }
 
         [Key]
@@ -27,16 +26,14 @@ namespace backend.Entity
         [Column("category_id")]
         public int? CategoryId { get; set; }
 
-        [Column("price", TypeName = "money")]
+        [Column("price")]
         public decimal Price { get; set; }
 
-        [Column("amount", TypeName = "numeric")]
+        [Column("amount")]
         public decimal Amount { get; set; }
 
         public virtual Category Category { get; set; }
 
         public virtual Supplier Supplier { get; set; }
-
-       // public virtual ICollection<GoodsInOrders> GoodsInOrders { get; set; }
     }
 }

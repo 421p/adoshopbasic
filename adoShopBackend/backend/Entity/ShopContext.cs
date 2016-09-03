@@ -17,8 +17,8 @@ namespace backend.Entity
         public DbSet<Category> Categories { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
         public DbSet<Good> Goods { get; set; }
-        //public DbSet<Order> Orders { get; set; }
-        //public DbSet<GoodsInOrders> GoodsInOrders { get; set; }
-        
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderRelatedGoods> GoodCollections { get; set; }
+
     }
 }
