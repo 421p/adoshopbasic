@@ -17,7 +17,7 @@ namespace backend
         {
             Database.SetInitializer(new DropCreateDatabaseAlways<ShopContext>());
 
-            var model = new ShopContext(ConnectionStrings["shop_ado"].ConnectionString);
+            var model = new ShopContext();
 
             model.Users.Add(new User()
             {
@@ -25,14 +25,14 @@ namespace backend
                 Password = "alina",
                 Role = UserRole.Manager
             });
-
+            
             model.SaveChanges();
 
             foreach (var user in model.Users)
             {
                 Console.WriteLine(user.Name);
             }
-
+            
             Console.ReadKey();
         }
     }
