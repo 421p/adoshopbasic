@@ -69,8 +69,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntitiesCreation.cs" />
     <Compile Include="Entity\Category.cs" />
     <Compile Include="Entity\Good.cs" />
+    <Compile Include="Entity\OrderFactory.cs" />
     <Compile Include="Entity\OrderRelatedGoods.cs" />
     <Compile Include="Entity\Order.cs" />
     <Compile Include="Entity\ShopContext.cs" />

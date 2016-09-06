@@ -19,6 +19,5 @@ namespace backend.Entity
         public DbSet<Good> Goods { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderRelatedGoods> GoodCollections { get; set; }
-
     }
 }

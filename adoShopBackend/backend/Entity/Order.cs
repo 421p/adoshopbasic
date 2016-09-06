@@ -22,6 +22,9 @@ namespace backend.Entity
         [Required]
         public DateTime Date { get; set; }
 
+        [Column("user_id")]
+        public int? UserId { get; set; }
+
         public virtual User.User User { get; set; }
 
         public virtual ICollection<OrderRelatedGoods> Goods { get; set; }
