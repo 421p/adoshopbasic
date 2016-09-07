@@ -1,6 +1,7 @@
 PostgreSQLPortable/
 adoShopBackend/packages
 adoShopBackend/.vs
+adoShopBackend/.idea
 adoShopBackend/backend/bin
 adoShopBackend/backend/obj
 adoShopBackend/backendTestCase/bin
