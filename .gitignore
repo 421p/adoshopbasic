@@ -6,4 +6,6 @@ AdoShop/bin/
 AdoShop/obj/
 AdoShopTestCase/bin/
 AdoShopTestCase/obj/
+PostgresRunner/bin/
+PostgresRunner/obj/
 TestResult.xml

@@ -1,27 +1,20 @@
 ﻿using System;
-using System.Configuration;
 using System.Data.Entity;
-using System.Threading.Tasks;
+using AdoShop.App;
 using AdoShop.Entity;
-using AdoShop.Server;
 
-namespace AdoShop
-{
-    class Program
-    {
+namespace AdoShop {
+    class Program {
         static void Main()
         {
             Database.SetInitializer(new DropCreateDatabaseAlways<ShopContext>());
 
-            var instance = new Instance();
-
-            Task.Run(() => instance.Start());
-
-            using (var model = new ShopContext(ConfigurationManager.ConnectionStrings["shop_ado"].ConnectionString)) {
-                Faker.Faker.InjectEntities(model);
+            try {
+                Application.Run();
             }
-
-            Console.WriteLine("Done");
+            catch (Exception e) {
+                Console.WriteLine(e.Message);
+            }
         }
     }
 }

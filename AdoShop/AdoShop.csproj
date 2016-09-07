@@ -132,6 +132,12 @@
     <Folder Include="Factory" />
     <Folder Include="Faker" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PostgresRunner\PostgresRunner.csproj">
+      <Project>{B2380AC4-F136-4762-B3B8-30D45B6D8DF7}</Project>
+      <Name>PostgresRunner</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
