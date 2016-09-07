@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
 using System.Data.Entity;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using backend.Entity;
-using backend.Entity.User;
-
+using static backend.Faker.Faker;
+using static System.Configuration.ConfigurationManager;
 
 namespace backend
 {
@@ -17,11 +12,11 @@ namespace backend
         {
             Database.SetInitializer(new DropCreateDatabaseAlways<ShopContext>());
 
-            Entities.Create();
+            using (var model = new ShopContext(ConnectionStrings["shop_ado"].ConnectionString)) {
+                InjectEntities(model);
+            }
 
             Console.WriteLine("Done");
-            
-            Console.ReadKey();
         }
     }
 }
