@@ -1,9 +1,9 @@
 PostgreSQLPortable/
-packages
-.vs
-.idea
-AdoShop/bin
-AdoShop/obj
-AdoShopTestCase/bin
-AdoShopTestCase/obj
+packages/
+.vs/
+.idea/
+AdoShop/bin/
+AdoShop/obj/
+AdoShopTestCase/bin/
+AdoShopTestCase/obj/
 TestResult.xml

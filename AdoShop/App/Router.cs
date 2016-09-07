@@ -4,11 +4,11 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
-using AdoShop.ShopAdo.Controller;
+using AdoShop.App.Controller;
 using LanguageExt;
 using NHttp;
 
-namespace AdoShop.ShopAdo
+namespace AdoShop.App
 {
     public class Router
     {

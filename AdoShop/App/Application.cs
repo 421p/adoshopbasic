@@ -1,4 +1,4 @@
-﻿namespace AdoShop.ShopAdo
+﻿namespace AdoShop.App
 {
     class Application
     {

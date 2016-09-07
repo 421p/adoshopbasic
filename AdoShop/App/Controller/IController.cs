@@ -1,6 +1,6 @@
 ﻿using NHttp;
 
-namespace AdoShop.ShopAdo.Controller
+namespace AdoShop.App.Controller
 {
     interface IController
     {

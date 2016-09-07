@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using NHttp;
 
-namespace AdoShop.ShopAdo.Controller
+namespace AdoShop.App.Controller
 {
     class MainPageController : IController
     {

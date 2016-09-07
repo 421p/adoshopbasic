@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Net;
-using AdoShop.ShopAdo;
+using AdoShop.App;
 using NHttp;
 
 namespace AdoShop.Server

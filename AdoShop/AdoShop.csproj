@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{18D29629-C0D2-4A8E-AA2E-78EF518FB60C}</ProjectGuid>
     <OutputType>Exe</OutputType>
-	<OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AdoShop</RootNamespace>
     <AssemblyName>AdoShop</AssemblyName>
@@ -116,10 +116,10 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Server\Instance.cs" />
-    <Compile Include="ShopAdo\Application.cs" />
-    <Compile Include="ShopAdo\Controller\IController.cs" />
-    <Compile Include="ShopAdo\Controller\MainPageController.cs" />
-    <Compile Include="ShopAdo\Router.cs" />
+    <Compile Include="App\Application.cs" />
+    <Compile Include="App\Controller\IController.cs" />
+    <Compile Include="App\Controller\MainPageController.cs" />
+    <Compile Include="App\Router.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
