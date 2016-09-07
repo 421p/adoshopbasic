@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.IO;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace PostgresRunner {
     public class PostgresProcess {
@@ -34,15 +33,25 @@ namespace PostgresRunner {
             _stdin = _process.StandardInput;
 
             _process.OutputDataReceived += (sender, args) => {
-                Console.WriteLine(args.Data);
-
                 if (args.Data == null) return;
-                if (Regex.IsMatch(args.Data, @"quit\sand\sshutdown\sserver")) {
+                if (Regex.IsMatch(args.Data, @"server\sstarted")) {
+                    _stdin.WriteLine(@"select 1 from pg_roles where rolname = 'shop_ado';");
+                }
+
+                if (Regex.IsMatch(args.Data, @"0\srows")) {
+                    _stdin.WriteLine("create user shop_ado with password 'shop_ado' createdb;");
+                }
+
+                if (Regex.IsMatch(args.Data, @"1\srow") ||
+                    Regex.IsMatch(args.Data, @"CREATE\sROLE")) {
                     Load?.Invoke(this, new EventArgs());
                 }
             };
 
+            _process.ErrorDataReceived += (sender, args) => Console.WriteLine(args.Data);
+
             _process.BeginOutputReadLine();
+            _process.BeginErrorReadLine();
 
             return _process;
         }
