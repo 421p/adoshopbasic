@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
+using LanguageExt;
 
 namespace backend.Entity
 {
@@ -28,9 +28,7 @@ namespace backend.Entity
         public int UserId { get; set; }
 
         [NotMapped]
-        public decimal Sum {
-            get { return Goods.Aggregate(decimal.Zero, (seed, current) => current.Sum); }
-        }
+        public decimal Sum => Goods.Fold(decimal.Zero, (seed, current) => current.Sum);
 
         public virtual User.User User { get; set; }
 
