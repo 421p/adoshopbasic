@@ -1,9 +1,9 @@
 PostgreSQLPortable/
-adoShopBackend/packages
-adoShopBackend/.vs
-adoShopBackend/.idea
-adoShopBackend/backend/bin
-adoShopBackend/backend/obj
-adoShopBackend/backendTestCase/bin
-adoShopBackend/backendTestCase/obj
+packages
+.vs
+.idea
+AdoShop/bin
+AdoShop/obj
+AdoShopTestCase/bin
+AdoShopTestCase/obj
 TestResult.xml
