@@ -27,7 +27,11 @@ namespace AdoShop.App
 
             if (availableRoutes.Contains(request.Path))
             {
-                _controllers.First(x => x.GetRoute() == request.Path).Proccess(request, response);
+                using (var writer = new StreamWriter(response.OutputStream)) {
+                    var responseString = _controllers.First(x => x.GetRoute() == request.Path)
+                        .Proccess(request, response);
+                    writer.Write(responseString);
+                }
             }
             else if (Webroot.GetFiles().Map(x => x.Name).Contains(request.Path.Substring(1)))
             {
