@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using backend.ShopAdo.Controller;
 using LanguageExt;
 using NHttp;
@@ -15,7 +13,7 @@ namespace backend.ShopAdo
     public class Router
     {
         private static readonly IEnumerable<IController> _controllers;
-        public static DirectoryInfo Webroot { get; private set; }
+        public static DirectoryInfo Webroot { get; }
 
         static Router()
         {
