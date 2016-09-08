@@ -102,6 +102,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App\Controller\AdminPageController.cs" />
+    <Compile Include="App\Controller\CategoriesController.cs" />
+    <Compile Include="App\Controller\GoodsController.cs" />
+    <Compile Include="App\Controller\ShutdownController.cs" />
+    <Compile Include="App\Controller\SuppliersController.cs" />
     <Compile Include="Entity\Category.cs" />
     <Compile Include="Entity\Good.cs" />
     <Compile Include="Entity\OrderRelatedGoods.cs" />
@@ -126,6 +131,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="www\admin.html" />
+    <Content Include="www\cashier.js" />
     <Content Include="www\index.html" />
   </ItemGroup>
   <ItemGroup>
