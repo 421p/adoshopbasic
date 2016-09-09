@@ -107,6 +107,7 @@
     <Compile Include="App\Controller\GoodsController.cs" />
     <Compile Include="App\Controller\ShutdownController.cs" />
     <Compile Include="App\Controller\SuppliersController.cs" />
+    <Compile Include="App\AuthUserData.cs" />
     <Compile Include="Entity\Category.cs" />
     <Compile Include="Entity\Good.cs" />
     <Compile Include="Entity\OrderRelatedGoods.cs" />
@@ -115,6 +116,7 @@
     <Compile Include="Entity\Supplier.cs" />
     <Compile Include="Entity\User\User.cs" />
     <Compile Include="Entity\User\UserRoles.cs" />
+    <Compile Include="Entity\User\UserSalts.cs" />
     <Compile Include="Factory\OrderFactory.cs" />
     <Compile Include="Faker\Faker.cs" />
     <Compile Include="NpgsqlConfiguration.cs" />
@@ -125,6 +127,7 @@
     <Compile Include="App\Controller\IController.cs" />
     <Compile Include="App\Controller\MainPageController.cs" />
     <Compile Include="App\Router.cs" />
+    <Compile Include="Utils\AES.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -138,6 +141,7 @@
   <ItemGroup>
     <Folder Include="Factory" />
     <Folder Include="Faker" />
+    <Folder Include="Utils" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PostgresRunner\PostgresRunner.csproj">

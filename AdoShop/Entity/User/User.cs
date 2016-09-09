@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using AdoShop.Utils;
 
 namespace AdoShop.Entity.User
 {
@@ -12,7 +13,7 @@ namespace AdoShop.Entity.User
 
         public User()
         {
-            this.ApiKey = Guid.NewGuid().ToString("N");
+            ApiKey = Guid.NewGuid().ToString("N");
             Orders = new HashSet<Order>();
         }
 
@@ -44,5 +45,10 @@ namespace AdoShop.Entity.User
         public string ApiKey { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; }
+
+        public bool ValidatePassword(string given)
+        {
+            return Password == Aes.Encrypt(given, UserSalts.Default);
+        }
     }
 }
