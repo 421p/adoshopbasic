@@ -94,6 +94,7 @@
       <HintPath>..\packages\System.Reactive.PlatformServices.3.0.0\lib\net45\System.Reactive.PlatformServices.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -129,6 +130,7 @@
     <Compile Include="App\Controller\MainPageController.cs" />
     <Compile Include="App\Router.cs" />
     <Compile Include="Utils\AES.cs" />
+    <Compile Include="Utils\ClientGoodsData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

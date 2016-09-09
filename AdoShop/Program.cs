@@ -10,7 +10,7 @@ namespace AdoShop {
         {
             ShowWindow(GetConsoleWindow(), 0);
 
-            Database.SetInitializer(new CreateDatabaseIfNotExists<ShopContext>());
+            Database.SetInitializer(new DropCreateDatabaseAlways<ShopContext>());
 
             try {
                 Application.Run();

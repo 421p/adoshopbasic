@@ -17,12 +17,27 @@
         .board {
             margin: 2rem;
         }
+
+        .noselect {
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none;   /* Chrome/Safari/Opera */
+            -khtml-user-select: none;    /* Konqueror */
+            -moz-user-select: none;      /* Firefox */
+            -ms-user-select: none;       /* Internet Explorer/Edge */
+            user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser */
+        }
     </style>
 
 </head>
 <body>
-
-<div class="board grid">
+<ul class="m-menu" >
+    <li><a>Білоцерківський Хавчик</a></li>
+    <li class="place-right bg-cyan"><a class="cancel-order">Cancel Order</a></li>
+    <li class="place-right bg-lightTeal"><a class="create-order">Create Order</a></li>
+    <li class="place-right"><a><span class="sum-order">0</span> UAH</a></li>
+</ul>
+<div class="board grid noselect">
 </div>
 
 </body>

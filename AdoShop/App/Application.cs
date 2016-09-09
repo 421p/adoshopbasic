@@ -25,9 +25,9 @@ namespace AdoShop.App
         public static void Run()
         {
             var instance = new Instance();
-            //var injector = new Task(() => Faker.Faker.InjectEntities(Context));
+            var injector = new Task(() => Faker.Faker.InjectEntities(Context));
 
-            //Postgres.Load += (sender, args) => injector.Start();
+            Postgres.Load += (sender, args) => injector.Start();
 
             Postgres.Halted += (sender, args) => Environment.Exit(0);
 
@@ -39,10 +39,10 @@ namespace AdoShop.App
 
             Console.WriteLine("Loading...");
 
-//            injector.ContinueWith(x => {
-//                Console.Clear();
-//                Console.WriteLine("Loaded.");
-//            });
+            injector.ContinueWith(x => {
+                Console.Clear();
+                Console.WriteLine("Loaded.");
+            });
 
             Console.ReadKey();
         }

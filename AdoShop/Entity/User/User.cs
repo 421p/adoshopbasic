@@ -25,6 +25,10 @@ namespace AdoShop.Entity.User
         [Required]
         public string Name { get; set; }
 
+        [Column("full_name")]
+        [Required]
+        public string FullName { get; set; }
+
         [Column("password")]
         [Required]
         public string Password { get; set; }

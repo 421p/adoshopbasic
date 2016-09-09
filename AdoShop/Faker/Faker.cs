@@ -11,13 +11,15 @@ namespace AdoShop.Faker {
             var alina = new User {
                 Name = "Alina",
                 Password = Aes.Encrypt("alina", UserSalts.Default),
-                Role = UserRole.Manager
+                Role = UserRole.Manager,
+                FullName = "ШЕБАНОВА А."
             };
 
             var ira = new User {
                 Name = "Ira",
                 Password = Aes.Encrypt("ira", UserSalts.Default),
-                Role = UserRole.Operator
+                Role = UserRole.Operator,
+                FullName = "ПІДГОРНЯК Д."
             };
             model.Users.Add(alina);
             model.Users.Add(ira);
