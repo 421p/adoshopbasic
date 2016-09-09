@@ -1,14 +1,13 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
 
 namespace AdoShop.Entity
 {
     [Table("good_count_pair")]
     public class OrderRelatedGoods
     {
-        private int _count;
-
         [Key]
         [Column("id")]
         public int Id { get; set; }
@@ -21,24 +20,16 @@ namespace AdoShop.Entity
 
         [Column("count")]
         [Required]
-        public int Count
-        {
-            get { return _count; }
-            set
-            {
-                if (value > Good.Count) {
-                    throw new Exception("Not enough goods to sell.");
-                }
-                _count = value;
-            }
-        }
+        public int Count { get; set; }
 
         [Column("sum")]
         [Required]
         public decimal Sum { get; set; }
 
+        [JsonIgnore]
         public virtual Good Good { get; set; }
 
+        [JsonIgnore]
         public virtual Order Order { get; set; }
     }
 }

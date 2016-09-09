@@ -2,17 +2,27 @@
 using AdoShop.Entity;
 using AdoShop.Entity.User;
 using AdoShop.Factory;
+using AdoShop.Utils;
 
 namespace AdoShop.Faker {
     public static class Faker {
         public static void InjectEntities(ShopContext model)
         {
-            var user = new User {
+            var alina = new User {
                 Name = "Alina",
-                Password = "alina",
-                Role = UserRole.Manager
+                Password = Aes.Encrypt("alina", UserSalts.Default),
+                Role = UserRole.Manager,
+                FullName = "ШЕБАНОВА А."
             };
-            model.Users.Add(user);
+
+            var ira = new User {
+                Name = "Ira",
+                Password = Aes.Encrypt("ira", UserSalts.Default),
+                Role = UserRole.Operator,
+                FullName = "ПІДГОРНЯК Д."
+            };
+            model.Users.Add(alina);
+            model.Users.Add(ira);
 
             var drinks = new Category {
                 Name = "Drinks"
@@ -129,7 +139,7 @@ namespace AdoShop.Faker {
 
             model.SaveChanges();
 
-            var order = OrderFactory.CreateOrder(user, new[] {
+            var order = OrderFactory.CreateOrder(ira, new[] {
                 new OrderRelatedGoods {
                     Good = kompot,
                     Count = 5

@@ -1,6 +1,8 @@
 ﻿using System.IO;
-using System.Threading.Tasks;
+using AdoShop.Utils;
+using static LanguageExt.Prelude;
 using NHttp;
+using static AdoShop.App.Controller.AdminPageController;
 
 namespace AdoShop.App.Controller {
     public class ShutdownController : IController {
@@ -11,9 +13,22 @@ namespace AdoShop.App.Controller {
 
         public string Proccess(HttpRequest request, HttpResponse response)
         {
-            Task.Run(() => Application.Halt());
+            var resp = string.Empty;
 
-            return "Server is going to shutdown.";
+            var optional = Router.InvokeBasicHttpAuth(request);
+
+            var user = optional.Match(x => x, () => new AuthUserData());
+
+            var boolPass = Aes.Encrypt(user.Password, "secret_token") == Aes.Encrypt("admin", "secret_token");
+
+            if (user.Login == "admin" && boolPass) {
+                resp = "Server is going to shutdown";
+                Application.Halt();
+            } else {
+                Reject(response);
+            }
+
+            return resp;
         }
     }
 }

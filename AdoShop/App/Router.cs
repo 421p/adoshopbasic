@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 using System.Threading;
 using AdoShop.App.Controller;
 using LanguageExt;
+using static LanguageExt.Prelude;
 using NHttp;
 
 namespace AdoShop.App
@@ -57,6 +59,18 @@ namespace AdoShop.App
             waitHandle.WaitOne();
             closure.Invoke();
             waitHandle.Set();
+        }
+
+        public static Option<AuthUserData> InvokeBasicHttpAuth(HttpRequest request)
+        {
+            if (!request.Headers.Keys.Cast<string>().Contains("Authorization")) {
+                return None;
+            }
+
+            var base64 = request.Headers["Authorization"].Substring("Basic ".Length);
+            var authData = Encoding.UTF8.GetString(Convert.FromBase64String(base64)).Split(':');
+
+            return Some(new AuthUserData{Login = authData[0], Password = authData[1]});
         }
 
         private static IEnumerable<Type> LoadControllers()
