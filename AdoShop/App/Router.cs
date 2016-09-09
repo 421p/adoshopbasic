@@ -61,16 +61,16 @@ namespace AdoShop.App
             waitHandle.Set();
         }
 
-        public static AuthUserData InvokeBasicHttpAuth(HttpRequest request)
+        public static Option<AuthUserData> InvokeBasicHttpAuth(HttpRequest request)
         {
             if (!request.Headers.Keys.Cast<string>().Contains("Authorization")) {
-                return null;
+                return None;
             }
 
             var base64 = request.Headers["Authorization"].Substring("Basic ".Length);
             var authData = Encoding.UTF8.GetString(Convert.FromBase64String(base64)).Split(':');
 
-            return new AuthUserData{Login = authData[0], Password = authData[1]};
+            return Some(new AuthUserData{Login = authData[0], Password = authData[1]});
         }
 
         private static IEnumerable<Type> LoadControllers()

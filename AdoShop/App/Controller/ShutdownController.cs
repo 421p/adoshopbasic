@@ -15,7 +15,7 @@ namespace AdoShop.App.Controller {
         {
             var resp = string.Empty;
 
-            var optional = Optional(Router.InvokeBasicHttpAuth(request));
+            var optional = Router.InvokeBasicHttpAuth(request);
 
             var user = optional.Match(x => x, () => new AuthUserData());
 
@@ -24,8 +24,7 @@ namespace AdoShop.App.Controller {
             if (user.Login == "admin" && boolPass) {
                 resp = "Server is going to shutdown";
                 Application.Halt();
-            }
-            else {
+            } else {
                 Reject(response);
             }
 

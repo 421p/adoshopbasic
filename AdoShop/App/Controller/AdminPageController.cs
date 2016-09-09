@@ -15,7 +15,7 @@ namespace AdoShop.App.Controller {
 
         public string Proccess(HttpRequest request, HttpResponse response)
         {
-            var optional = Optional(Router.InvokeBasicHttpAuth(request));
+            var optional = Router.InvokeBasicHttpAuth(request);
 
             var user = optional.Match(x => x, () => new AuthUserData());
 

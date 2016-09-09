@@ -137,7 +137,7 @@ namespace AdoShop.Faker {
 
             model.SaveChanges();
 
-            var order = OrderFactory.CreateOrder(user, new[] {
+            var order = OrderFactory.CreateOrder(ira, new[] {
                 new OrderRelatedGoods {
                     Good = kompot,
                     Count = 5

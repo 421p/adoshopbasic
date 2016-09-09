@@ -105,6 +105,7 @@
     <Compile Include="App\Controller\AdminPageController.cs" />
     <Compile Include="App\Controller\CategoriesController.cs" />
     <Compile Include="App\Controller\GoodsController.cs" />
+    <Compile Include="App\Controller\MakeOrderController.cs" />
     <Compile Include="App\Controller\ShutdownController.cs" />
     <Compile Include="App\Controller\SuppliersController.cs" />
     <Compile Include="App\AuthUserData.cs" />
