@@ -9,6 +9,7 @@ using System.Configuration;
 using System.Data.Entity;
 using System.Linq;
 using System.Windows;
+using AdoShop.Utils;
 
 namespace AdoShopManagement.ViewModel
 {
@@ -106,11 +107,13 @@ namespace AdoShopManagement.ViewModel
 
             string _cnStr = $"User ID={DatabaseLogin};Password={DatabasePassword};Host=localhost;Port=5432;Database=shop_ado;";
             _context = new ShopContext(_cnStr);
-            
+
+            var encrypted = Aes.Encrypt(AppPassword, UserSalts.Default);
+
             if (!_context.Database.Exists()
                 || !_context.Users.Any(user =>
                 user.Name == AppLogin
-                && user.Password == AppPassword
+                && user.Password  == encrypted
                 && user.Role == UserRole.Manager))
             {
 
