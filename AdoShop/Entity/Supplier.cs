@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
 
 namespace AdoShop.Entity
 {
@@ -21,6 +22,7 @@ namespace AdoShop.Entity
         [StringLength(20)]
         public string Name { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<Good> Goods { get; set; }
     }
 }

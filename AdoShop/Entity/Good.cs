@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
 
 namespace AdoShop.Entity
 {
@@ -35,10 +36,13 @@ namespace AdoShop.Entity
         [Required]
         public int Count { get; set; }
 
+        [JsonIgnore]
         public virtual Category Category { get; set; }
 
+        [JsonIgnore]
         public virtual Supplier Supplier { get; set; }
 
+        [JsonIgnore]
         public virtual ICollection<OrderRelatedGoods> Orders { get; set; }
     }
 }

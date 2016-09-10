@@ -9,27 +9,30 @@ namespace AdoShop.App
 {
     public static class Application
     {
-        public static ShopContext Context { get; set; }
+        public static ShopContext Context { get; }
+
+        private static PostgresProcess Postgres { get; }
 
         static Application()
         {
             Context = new ShopContext(
                 ConfigurationManager.ConnectionStrings["shop_ado"].ConnectionString
             );
+
+            Postgres = new PostgresProcess();
         }
 
         public static void Run()
         {
-            var postgres = new PostgresProcess();
             var instance = new Instance();
             var injector = new Task(() => Faker.Faker.InjectEntities(Context));
 
-            postgres.Load += (sender, args) => injector.Start();
+            Postgres.Load += (sender, args) => injector.Start();
 
-            postgres.Halted += (sender, args) => Environment.Exit(0);
+            Postgres.Halted += (sender, args) => Environment.Exit(0);
 
             Task.Run(() => {
-                postgres.StartPostgres();
+                Postgres.StartPostgres();
             });
 
             Task.Run(() => instance.Start());
@@ -41,17 +44,12 @@ namespace AdoShop.App
                 Console.WriteLine("Loaded.");
             });
 
-            while (true) {
-                var input = Console.ReadLine();
+            Console.ReadKey();
+        }
 
-                switch (input) {
-                    case "exit":
-                        postgres.StopPostgres();
-                        break;
-                    default:
-                        continue;
-                }
-            }
+        public static void Halt()
+        {
+            Postgres.StopPostgres();
         }
     }
 }

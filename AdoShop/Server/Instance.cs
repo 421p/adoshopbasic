@@ -13,6 +13,10 @@ namespace AdoShop.Server
         {
             _server = new HttpServer {EndPoint = new IPEndPoint(IPAddress.Loopback, 8082)};
             _server.RequestReceived += OnRequest;
+            _server.UnhandledException += (sender, args) => {
+                Console.WriteLine(args.Exception.Message);
+                Console.WriteLine(args.Exception.StackTrace);
+            };
         }
 
         private void OnRequest(object sender, HttpRequestEventArgs args)

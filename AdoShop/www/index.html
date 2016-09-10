@@ -4,8 +4,41 @@
 <head>
     <meta charset="utf-8" />
     <title>AdoShop</title>
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/linq.js/2.2.0.2/jquery.linq.js"></script>
+    <script src="cashier.js"></script>
+    <link rel="stylesheet" href="https://cdn.rawgit.com/olton/Metro-UI-CSS/master/build/css/metro-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/olton/Metro-UI-CSS/master/build/css/metro-rtl.min.css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/olton/Metro-UI-CSS/master/build/css/metro-schemes.min.css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/olton/Metro-UI-CSS/master/build/css/metro-responsive.min.css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/olton/Metro-UI-CSS/master/build/css/metro.min.css">
+
+    <style>
+        .board {
+            margin: 2rem;
+        }
+
+        .noselect {
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none;   /* Chrome/Safari/Opera */
+            -khtml-user-select: none;    /* Konqueror */
+            -moz-user-select: none;      /* Firefox */
+            -ms-user-select: none;       /* Internet Explorer/Edge */
+            user-select: none;           /* Non-prefixed version, currently
+                                  not supported by any browser */
+        }
+    </style>
+
 </head>
 <body>
-    main page template
+<ul class="m-menu" >
+    <li><a>Білоцерківський Хавчик</a></li>
+    <li class="place-right bg-cyan"><a class="cancel-order">Cancel Order</a></li>
+    <li class="place-right bg-lightTeal"><a class="create-order">Create Order</a></li>
+    <li class="place-right"><a><span class="sum-order">0</span> UAH</a></li>
+</ul>
+<div class="board grid noselect">
+</div>
+
 </body>
 </html>

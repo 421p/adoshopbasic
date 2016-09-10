@@ -16,6 +16,7 @@ namespace AdoShop.Factory
 
                 good.Count -= pair.Count;
 
+
                 order.Goods.Add(pair);
             }
 

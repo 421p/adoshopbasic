@@ -28,7 +28,7 @@ namespace AdoShop.Entity
         public int UserId { get; set; }
 
         [NotMapped]
-        public decimal Sum => Goods.Fold(decimal.Zero, (seed, current) => current.Sum);
+        public decimal Sum => Goods.Fold(decimal.Zero, (seed, current) => seed + current.Sum);
 
         public virtual User.User User { get; set; }
 

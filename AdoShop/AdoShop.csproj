@@ -58,10 +58,6 @@
       <HintPath>..\packages\LanguageExt.Parsec.1.9.1\lib\net45\LanguageExt.Parsec.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="MahApps.Metro, Version=1.2.4.0, Culture=neutral, PublicKeyToken=f4fb5a3c4d1e5b4f, processorArchitecture=MSIL">
-      <HintPath>..\packages\MahApps.Metro.1.2.4.0\lib\net45\MahApps.Metro.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -78,8 +74,6 @@
       <HintPath>..\packages\NUnit.3.4.1\lib\net45\nunit.framework.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -100,19 +94,22 @@
       <HintPath>..\packages\System.Reactive.PlatformServices.3.0.0\lib\net45\System.Reactive.PlatformServices.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\MahApps.Metro.1.2.4.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App\Controller\AdminPageController.cs" />
+    <Compile Include="App\Controller\CategoriesController.cs" />
+    <Compile Include="App\Controller\GoodsController.cs" />
+    <Compile Include="App\Controller\MakeOrderController.cs" />
+    <Compile Include="App\Controller\ShutdownController.cs" />
+    <Compile Include="App\Controller\SuppliersController.cs" />
+    <Compile Include="App\AuthUserData.cs" />
     <Compile Include="Entity\Category.cs" />
     <Compile Include="Entity\Good.cs" />
     <Compile Include="Entity\OrderRelatedGoods.cs" />
@@ -121,6 +118,7 @@
     <Compile Include="Entity\Supplier.cs" />
     <Compile Include="Entity\User\User.cs" />
     <Compile Include="Entity\User\UserRoles.cs" />
+    <Compile Include="Entity\User\UserSalts.cs" />
     <Compile Include="Factory\OrderFactory.cs" />
     <Compile Include="Faker\Faker.cs" />
     <Compile Include="NpgsqlConfiguration.cs" />
@@ -131,26 +129,22 @@
     <Compile Include="App\Controller\IController.cs" />
     <Compile Include="App\Controller\MainPageController.cs" />
     <Compile Include="App\Router.cs" />
+    <Compile Include="Utils\AES.cs" />
+    <Compile Include="Utils\ClientGoodsData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="Resources\Entypo.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Entypo-license.txt" />
-    <Content Include="Resources\WindowsIcons-license.txt" />
+    <Content Include="www\admin.html" />
+    <Content Include="www\cashier.js" />
     <Content Include="www\index.html" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Resources\Icons.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Resources\IconsNonShared.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
+    <Folder Include="Factory" />
+    <Folder Include="Faker" />
+    <Folder Include="Utils" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PostgresRunner\PostgresRunner.csproj">
