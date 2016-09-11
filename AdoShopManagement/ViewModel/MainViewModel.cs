@@ -27,6 +27,7 @@ namespace AdoShopManagement.ViewModel
             SaveCommand = new RelayCommand(SaveChangesInDB);
             SignInCommand = new RelayCommand(SignIn);
             SignOutCommand = new RelayCommand(SignOut);
+            RefreshCommand = new RelayCommand(Refresh);
         }
 
         public static ObservableCollection<Category> Categories { get; private set; }
@@ -34,6 +35,7 @@ namespace AdoShopManagement.ViewModel
         public RelayCommand SaveCommand { get; set; }
         public RelayCommand SignInCommand { get; set; }
         public RelayCommand SignOutCommand { get; set; }
+        public RelayCommand RefreshCommand { get; set; }
 
         public string DatabasePassword { private get; set; }
         public string AppPassword { private get; set; }
@@ -59,8 +61,12 @@ namespace AdoShopManagement.ViewModel
 
         public ObservableCollection<Good> Goods
         {
-            get { return _goods ??  _context.Goods.Local; }
-            set { _goods = value; }
+            get { return _goods; }
+            set
+            {
+                _goods = value;
+                RaisePropertyChanged("Goods");
+            }
         }
 
         public bool IsActiveProgressRing
@@ -105,18 +111,18 @@ namespace AdoShopManagement.ViewModel
         {
             ToggleProgressRingAndButton();
 
-            string _cnStr = $"User ID={DatabaseLogin};Password={DatabasePassword};Host=localhost;Port=5432;Database=shop_ado;";
-            _context = new ShopContext(_cnStr);
+            CreateContext();
+            string encrypted = string.Empty;
 
-            var encrypted = Aes.Encrypt(AppPassword, UserSalts.Default);
+            if (AppPassword != null)
+                encrypted = Aes.Encrypt(AppPassword, UserSalts.Default);
 
             if (!_context.Database.Exists()
                 || !_context.Users.Any(user =>
                 user.Name == AppLogin
-                && user.Password  == encrypted
+                && user.Password  == "alina"
                 && user.Role == UserRole.Manager))
             {
-
                 Messenger.Default.Send(new NotificationMessage<string>
                     ("Connection failed! Please make sure your data is correct and try again.", "ShowErrorBox"));
                 ToggleProgressRingAndButton();
@@ -138,6 +144,17 @@ namespace AdoShopManagement.ViewModel
             ToggleProgressRingAndButton();
         }
 
+        private void Refresh()
+        {
+            _context.Dispose();
+            CreateContext();
+            SetEntitiesData();
+            foreach (var item in Goods)
+            {
+                Console.WriteLine(item.Name);
+            }
+            
+        }
 
         private void ToggleProgressRingAndButton()
         {
@@ -152,6 +169,7 @@ namespace AdoShopManagement.ViewModel
             _context.Goods.Load();
             _context.Categories.Load();
             Categories = _context.Categories.Local;
+            Goods = _context.Goods.Local;
         }
 
         private void SetConfigData()
@@ -161,6 +179,12 @@ namespace AdoShopManagement.ViewModel
             config.AppSettings.Settings["databaseLogin"].Value = DatabaseLogin;
             config.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection("appSettings");
+        }
+
+        private void CreateContext()
+        {
+            string _cnStr = $"User ID={DatabaseLogin};Password={DatabasePassword};Host=localhost;Port=5432;Database=shop_ado;";
+            _context = new ShopContext(_cnStr);
         }
     }
 }
