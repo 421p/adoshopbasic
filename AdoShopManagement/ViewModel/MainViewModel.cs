@@ -120,7 +120,7 @@ namespace AdoShopManagement.ViewModel
             if (!_context.Database.Exists()
                 || !_context.Users.Any(user =>
                 user.Name == AppLogin
-                && user.Password  == "alina"
+                && user.Password  == encrypted
                 && user.Role == UserRole.Manager))
             {
                 Messenger.Default.Send(new NotificationMessage<string>
@@ -149,11 +149,6 @@ namespace AdoShopManagement.ViewModel
             _context.Dispose();
             CreateContext();
             SetEntitiesData();
-            foreach (var item in Goods)
-            {
-                Console.WriteLine(item.Name);
-            }
-            
         }
 
         private void ToggleProgressRingAndButton()
