@@ -1,0 +1,63 @@
+﻿<Controls:MetroWindow x:Class="AdoShopManagement.View.StartWindow"
+       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:AdoShopManagement.View"
+        xmlns:viewModel="clr-namespace:AdoShopManagement.ViewModel"
+        xml:lang="uk"
+        mc:Ignorable="d"
+        GlowBrush="Black"
+        WindowStartupLocation="CenterScreen"
+        Title="CANTEEN MANAGEMENT" Height="350" Width="400" ResizeMode="NoResize"
+        DataContext="{Binding Main, Source={StaticResource Locator}}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="113*"/>
+            <RowDefinition Height="107*"/>
+            <RowDefinition Height="102*"/>
+        </Grid.RowDefinitions>
+        <GroupBox Header="Application authorization" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="85" Width="374" Margin="10,0,10,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70*"/>
+                    <ColumnDefinition Width="110*"/>
+                    <ColumnDefinition Width="70*"/>
+                    <ColumnDefinition Width="110*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Login:" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBox Text="{Binding AppLogin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                    Height="25" Width="100" VerticalAlignment="Center"
+                    HorizontalAlignment="Left" Grid.Column="1"/>
+                <Label Content="Password:" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <PasswordBox Height="25" Width="100" VerticalAlignment="Center"
+                    HorizontalAlignment="Left" Grid.Column="3"
+                    Name="txtAppPassword" PasswordChanged="txtAppPassword_PasswordChanged"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Database authorization" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="85" Width="374" Margin="10,0,10,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70*"/>
+                    <ColumnDefinition Width="110*"/>
+                    <ColumnDefinition Width="70*"/>
+                    <ColumnDefinition Width="110*"/>
+                </Grid.ColumnDefinitions>
+                <Label Content="Login:" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <TextBox Text="{Binding DatabaseLogin, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                    Height="25" Width="100" VerticalAlignment="Center"
+                    HorizontalAlignment="Left" Grid.Column="1"/>
+                <Label Content="Password:" Grid.Column="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <PasswordBox Height="25" Width="100" VerticalAlignment="Center"
+                    HorizontalAlignment="Left" Grid.Column="3"
+                    Name="txtDatabasePassword" 
+                    PasswordChanged="txtDatabasePassword_PasswordChanged"/>
+            </Grid>
+        </GroupBox>
+        <Button Grid.Row="2" Content="sign in" Height="50" Width="100" 
+                IsDefault="True" Style="{StaticResource AccentedSquareButtonStyle}"
+                Command="{Binding SignInCommand}" Visibility="{Binding SignInButtonVisibility}"/>
+        <Controls:ProgressRing IsActive="{Binding IsActiveProgressRing}" Grid.Row="2"/>
+    </Grid>
+</Controls:MetroWindow>

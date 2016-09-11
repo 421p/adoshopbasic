@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoShop", "AdoShop\AdoShop.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoShopTestCase", "AdoShopTestCase\AdoShopTestCase.csproj", "{60797D04-916F-4265-A4A2-C73091F35CBC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdoShopManagement", "AdoShopManagement\AdoShopManagement.csproj", "{C99B1ED3-881A-403D-BEBC-B3909DC63626}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PostgresRunner", "PostgresRunner\PostgresRunner.csproj", "{B2380AC4-F136-4762-B3B8-30D45B6D8DF7}"
 EndProject
 Global
@@ -15,6 +17,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{18D29629-C0D2-4A8E-AA2E-78EF518FB60C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18D29629-C0D2-4A8E-AA2E-78EF518FB60C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18D29629-C0D2-4A8E-AA2E-78EF518FB60C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18D29629-C0D2-4A8E-AA2E-78EF518FB60C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60797D04-916F-4265-A4A2-C73091F35CBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60797D04-916F-4265-A4A2-C73091F35CBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60797D04-916F-4265-A4A2-C73091F35CBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60797D04-916F-4265-A4A2-C73091F35CBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C99B1ED3-881A-403D-BEBC-B3909DC63626}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C99B1ED3-881A-403D-BEBC-B3909DC63626}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C99B1ED3-881A-403D-BEBC-B3909DC63626}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C99B1ED3-881A-403D-BEBC-B3909DC63626}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B2380AC4-F136-4762-B3B8-30D45B6D8DF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B2380AC4-F136-4762-B3B8-30D45B6D8DF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2380AC4-F136-4762-B3B8-30D45B6D8DF7}.Release|Any CPU.ActiveCfg = Release|Any CPU

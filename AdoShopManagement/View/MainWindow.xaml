@@ -1,0 +1,128 @@
+﻿<Controls:MetroWindow x:Class="AdoShopManagement.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:local="clr-namespace:AdoShopManagement.View"
+        xmlns:viewModel="clr-namespace:AdoShopManagement.ViewModel"
+        xml:lang="uk"
+        mc:Ignorable="d"
+        GlowBrush="Black"
+        ResizeMode="CanResizeWithGrip"
+        WindowStartupLocation="CenterScreen"
+        Title="CANTEEN MANAGEMENT" Height="550" Width="800" MinWidth="800" MinHeight="550"
+        DataContext="{Binding Main, Source={StaticResource Locator}}">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Icons.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Button Command="{Binding RefreshCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="20"
+                   Height="20"
+                   Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_refresh}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <TextBlock Margin="4 0 0 0"
+                   VerticalAlignment="Center"
+                   Text="refresh" />
+                </StackPanel>
+            </Button>
+            <Button Command="{Binding SignOutCommand}">
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="20"
+                   Height="20"
+                   Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_cabinet_out}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <TextBlock Margin="4 0 0 0"
+                   VerticalAlignment="Center"
+                   Text="sign out" />
+                </StackPanel>
+            </Button>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+    <Grid>
+        <TabControl x:Name="tabControl" Margin="10" Grid.RowSpan="2" Grid.ColumnSpan="2">
+            <TabItem Header="Goods">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="16*"/>
+                        <ColumnDefinition Width="83*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="322*"/>
+                        <RowDefinition Height="73*"/>
+                    </Grid.RowDefinitions>
+                    <DataGrid ItemsSource="{Binding Goods}"
+                              Grid.Row="1" Grid.ColumnSpan="2"
+                              AutoGenerateColumns="false" Width="750" 
+                              VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10, 0, 0, 0">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}"/>
+                            <DataGridTextColumn Header="Portions amount" Binding="{Binding Path=Count}"/>
+                            <Controls:DataGridNumericUpDownColumn Header="Price" 
+                                                                  Binding="{Binding Path=Price}"
+                                                                  StringFormat="C"
+                                                                  Minimum="0"/>
+                            <DataGridTemplateColumn Header="Category">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <ComboBox
+                                                 ItemsSource="{Binding Source={x:Static viewModel:MainViewModel.Categories}}" 
+                                                 DisplayMemberPath="Name"                                         
+                                                 SelectedValue="{Binding CategoryId, UpdateSourceTrigger=PropertyChanged}"
+                                                 SelectedValuePath="Id"
+                                                 BorderBrush="{x:Null}"/>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left"
+                            Style="{StaticResource AccentedSquareButtonStyle}" Content="save" Height="50" Width="100"
+                            Command="{Binding SaveCommand}" IsDefault="True" Margin="12,15,11,15"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Categories">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="16*"/>
+                        <ColumnDefinition Width="83*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="322*"/>
+                        <RowDefinition Height="73*"/>
+                    </Grid.RowDefinitions>
+                    <DataGrid ItemsSource="{Binding Categories}"
+                              Grid.Row="1" Grid.ColumnSpan="2"
+                              AutoGenerateColumns="false" Width="750" 
+                              VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10, 0, 0, 0">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Name" Binding="{Binding Path=Name}"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <Button Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left"
+                            Style="{StaticResource AccentedSquareButtonStyle}" Content="save" Height="50" Width="100"
+                            Command="{Binding SaveCommand}" IsDefault="True" Margin="12,15,11,15"/>
+                </Grid>
+            </TabItem>
+
+        </TabControl>
+
+    </Grid>
+</Controls:MetroWindow>

@@ -8,4 +8,6 @@ AdoShopTestCase/bin/
 AdoShopTestCase/obj/
 PostgresRunner/bin/
 PostgresRunner/obj/
+AdoShopManagement/bin/
+AdoShopManagement/obj/
 TestResult.xml

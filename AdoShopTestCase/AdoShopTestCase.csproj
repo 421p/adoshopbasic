@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AdoShopTestCase</RootNamespace>
     <AssemblyName>AdoShopTestCase</AssemblyName>
-	<OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -90,7 +90,7 @@
       <Project>{18D29629-C0D2-4A8E-AA2E-78EF518FB60C}</Project>
       <Name>AdoShop</Name>
     </ProjectReference>
-    <ProjectReference Include="..\backend\backend.csproj">
+    <ProjectReference Include="..\AdoShop\AdoShop.csproj">
       <Project>{18d29629-c0d2-4a8e-aa2e-78ef518fb60c}</Project>
       <Name>backend</Name>
     </ProjectReference>
