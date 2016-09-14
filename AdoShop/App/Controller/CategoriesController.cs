@@ -11,8 +11,9 @@ namespace AdoShop.App.Controller {
 
         public string Proccess(HttpRequest request, HttpResponse response)
         {
+            var context = Application.CreateContext();
             response.Headers.Add("Content-Type", "application/json");
-            var cats = Application.Context.Categories.ToList();
+            var cats = context.Categories.ToList();
             return JsonConvert.SerializeObject(cats);
         }
     }

@@ -15,14 +15,14 @@ namespace AdoShop.Faker {
                 FullName = "ШЕБАНОВА А."
             };
 
-            var ira = new User {
-                Name = "Ira",
-                Password = Aes.Encrypt("ira", UserSalts.Default),
+            var asia = new User {
+                Name = "Asia",
+                Password = Aes.Encrypt("Asia", UserSalts.Default),
                 Role = UserRole.Operator,
-                FullName = "ПІДГОРНЯК Д."
+                FullName = "НЕЗРОЗУМІЛА А."
             };
             model.Users.Add(alina);
-            model.Users.Add(ira);
+            model.Users.Add(asia);
 
             var drinks = new Category {
                 Name = "Drinks"
@@ -114,7 +114,7 @@ namespace AdoShop.Faker {
             var sweetSalo = new Good {
                 Name = "Сало в шоколаді",
                 SupplierId = roshen.Id,
-                CategoryId = drinks.Id,
+                CategoryId = food.Id,
                 Price = Convert.ToDecimal(39.99),
                 Count = 150
             };
@@ -139,7 +139,7 @@ namespace AdoShop.Faker {
 
             model.SaveChanges();
 
-            var order = OrderFactory.CreateOrder(ira, new[] {
+            var order = OrderFactory.CreateOrder(asia, new[] {
                 new OrderRelatedGoods {
                     Good = kompot,
                     Count = 5

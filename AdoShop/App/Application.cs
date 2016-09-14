@@ -15,11 +15,15 @@ namespace AdoShop.App
 
         static Application()
         {
-            Context = new ShopContext(
-                ConfigurationManager.ConnectionStrings["shop_ado"].ConnectionString
-            );
+            Context = CreateContext();
 
             Postgres = new PostgresProcess();
+        }
+        public static ShopContext CreateContext()
+        {
+            return new ShopContext(
+                ConfigurationManager.ConnectionStrings["shop_ado"].ConnectionString
+            );
         }
 
         public static void Run()
@@ -42,6 +46,7 @@ namespace AdoShop.App
             injector.ContinueWith(x => {
                 Console.Clear();
                 Console.WriteLine("Loaded.");
+                Context.Dispose();
             });
 
             Console.ReadKey();

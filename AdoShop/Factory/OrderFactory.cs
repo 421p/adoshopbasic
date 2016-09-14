@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using AdoShop.Entity;
 using AdoShop.Entity.User;
 
@@ -12,6 +13,11 @@ namespace AdoShop.Factory
 
             foreach (var pair in goodCountPairs) {
                 var good = pair.Good;
+
+                if (pair.Count > good.Count) {
+                    throw new Exception("Not enough goods.");
+                }
+
                 pair.Sum = pair.Count * good.Price;
 
                 good.Count -= pair.Count;

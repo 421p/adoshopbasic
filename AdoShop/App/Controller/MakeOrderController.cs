@@ -8,7 +8,6 @@ using AdoShop.Utils;
 using LanguageExt;
 using Newtonsoft.Json;
 using NHttp;
-using static AdoShop.App.Application;
 using static LanguageExt.Prelude;
 
 namespace AdoShop.App.Controller {
@@ -20,18 +19,20 @@ namespace AdoShop.App.Controller {
 
         public string Proccess(HttpRequest request, HttpResponse response)
         {
+            var context = Application.CreateContext();
+
             if (!request.Headers.AllKeys.Contains("Api-Key")) {
                 return "Failed.";
             }
 
             var key = request.Headers["Api-Key"];
 
-            if (Context.Users.Count(x => x.ApiKey == key) == 0) {
+            if (context.Users.Count(x => x.ApiKey == key) == 0) {
                 Console.WriteLine("no user");
                 return "Failed. No user.";
             }
 
-            var user = Context.Users.First(x => x.ApiKey == key);
+            var user = context.Users.First(x => x.ApiKey == key);
 
             if (user.Role != UserRole.Operator) {
                 return "Only operator can create orders.";
@@ -43,13 +44,13 @@ namespace AdoShop.App.Controller {
 
             try {
                 var goods = data.Map(x => new OrderRelatedGoods {
-                    Good = Context.Goods.First(good => good.Id == x.Id),
+                    Good = context.Goods.First(good => good.Id == x.Id),
                     Count = x.Count
                 });
 
                 var order = OrderFactory.CreateOrder(user, goods);
-                Context.Orders.Add(order);
-                Context.SaveChanges();
+                context.Orders.Add(order);
+                context.SaveChanges();
 
                 var resp = "ТОВ \"БІЛОЦЕРКІВСЬКИЙ ХАВЧИК\"\n\n" +
                            $"ФІКСАЛЬНИЙ ЧЕК НОМЕР {order.Id}\n" +
